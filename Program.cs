@@ -1,5 +1,6 @@
 ﻿Console.Clear();
-double P1, P2, P3, L1, L2, L3, L4, L5, L6, media;
+double P1, P2, P3, L1, L2, L3, L4, L5, L6, 
+       mediaFinal, mediaListas, mediaProvas;
 const double MEDIA_APROVACAO = 6.0;
 
 Console.Write("Informe a nota da Lista 01:");
@@ -26,27 +27,35 @@ P1 = Convert.ToDouble(Console.ReadLine());
 Console.Write("Informe a nota da P2:");
 P2 = Convert.ToDouble(Console.ReadLine());
 
+mediaListas = (L1 + L2 + L3 + L4 + L5 + L6) / 6 * 0.2;
+mediaProvas = (P1 + P2) / 2 * 0.8;
 
-Console.Write("Informe a nota da P2:");
-P3 = Convert.ToDouble(Console.ReadLine());
-
-media = 0;
-
-//Console.WriteLine($"Média: {media:N1}");
-
-bool aprovado = media >= MEDIA_APROVACAO;
+mediaFinal = mediaListas + mediaProvas;
+bool aprovado = mediaFinal >= MEDIA_APROVACAO;
 
 if (aprovado)
 {
     Console.ForegroundColor = ConsoleColor.Green;
-    Console.WriteLine("Aprovado!!!");
+    Console.WriteLine($"Aprovado com média {mediaFinal:N1}");
 }
 else
 {
-    Console.ForegroundColor = ConsoleColor.Red;
-    Console.WriteLine("Reprovado!!");
+    Console.Write("Informe a nota da P3:");
+    P3 = Convert.ToDouble(Console.ReadLine());
+    
+    mediaProvas = (Math.Max(P1, P2) + P3) / 2 * 0.8;
+    mediaFinal = mediaListas + mediaProvas;
+
+    if (mediaFinal >= MEDIA_APROVACAO)
+    {
+        Console.ForegroundColor = ConsoleColor.Green;
+        Console.WriteLine($"Aprovado com média {mediaFinal:N1}");
+    }
+    else
+    {
+        Console.ForegroundColor = ConsoleColor.Red;
+        Console.WriteLine($"Reprovado com média {mediaFinal:N1}");    
+    }
 }
 
 Console.ResetColor();
-
-
