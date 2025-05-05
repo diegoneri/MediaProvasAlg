@@ -6,8 +6,25 @@ const double MEDIA_APROVACAO = 6.0;
 Console.Write("Informe a nota da Lista 01:");
 L1 = Convert.ToDouble(Console.ReadLine());
 
+if (L1 < 0 || L1 > 10)
+{
+    Console.WriteLine("Nota da lista 01 inválida!");
+    return;
+}
+
 Console.Write("Informe a nota da Lista 02:");
 L2 = Convert.ToDouble(Console.ReadLine());
+
+/*
+-inf             0          10          +inf
+|----------------|-----------|------------|
+*/
+
+if (!(L2 >= 0 && L2 <= 10))
+{
+    Console.WriteLine("Nota da lista 02 inválida!");
+    return;  
+}
 
 Console.Write("Informe a nota da Lista 03:");
 L3 = Convert.ToDouble(Console.ReadLine());
